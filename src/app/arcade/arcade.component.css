@@ -1,0 +1,14 @@
+.allArcades {
+    text-align: center;
+}
+
+.allArcades > h3 {
+    font-size: 3em;
+}
+
+.arcadeSpace {
+    width: 40%;
+    display: inline-block;
+    margin: 0px 15px;
+    box-sizing: border-box;
+}

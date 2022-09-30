@@ -1,0 +1,8 @@
+<div class="allArcades">
+    <h3>Play Arcades</h3>
+
+    <div *ngFor="let arcade of j;" class="arcadeSpace">
+        <app-arcade-detail [arcade]="arcade">
+        </app-arcade-detail>
+    </div>
+</div>

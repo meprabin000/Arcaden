@@ -1,0 +1,16 @@
+.header {
+    background-color: rgb(213 163 127 / 65%);
+    width: 100%;
+}
+
+.header > a {
+    text-decoration: none;
+}
+
+.headerTitle {
+    color: rgb(163 0 0);
+    text-align: center;
+    font-size: 4em;
+    padding: 20px;
+    margin: 0px;
+}
