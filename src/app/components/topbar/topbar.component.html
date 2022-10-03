@@ -35,7 +35,7 @@
             <form #balanceForm="ngForm" (ngSubmit)="userService.addBalance(balanceForm.value.balanceInput); amount = +''">
                 <div class="form-group">
                   <label for="balanceInput">Amount</label>
-                  <input type="number" step=0.01 class="form-control" id="balanceInput" aria-describedby="balanceHelp" placeholder="Enter the amount to add to balance." [(ngModel)]="amount" name="balanceInput">
+                  <input type="number" min="0.01" oninput="validity.valid || (value='')" step=0.01 class="form-control" id="balanceInput" aria-describedby="balanceHelp" placeholder="Enter the amount to add to balance." [(ngModel)]="amount" name="balanceInput">
                   <small id="balanceHelp" class="form-text text-muted">Please double check the amount before adding.</small>
                 </div>
                 <button type="submit" class="btn btn-primary" (onclick)="$event.preventDefault()">Add</button>
@@ -62,7 +62,7 @@
             <form #tokenForm="ngForm" (ngSubmit)="userService.purchaseToken(tokenForm.value.tokenInput); amount = +''">
                 <div class="form-group">
                   <label for="tokenInput">Number of tokens</label>
-                  <input type="number" class="form-control" id="tokenInput" aria-describedby="tokenHelp" placeholder="Enter the number to tokens to purchase" [(ngModel)]="amount" name="tokenInput">
+                  <input type="number" min="1" oninput="validity.valid || (value='')" class="form-control" id="tokenInput" aria-describedby="tokenHelp" placeholder="Enter the number to tokens to purchase" [(ngModel)]="amount" name="tokenInput">
                   <small id="balanceHelp" class="form-text text-muted" *ngIf="tokenForm.value.tokenInput">{{tokenForm.value.tokenInput}} tokens costs ${{ tokenForm.value.tokenInput * tokenRate }}</small>
                 </div>
                 <button type="submit" class="btn btn-primary">Purchase</button>

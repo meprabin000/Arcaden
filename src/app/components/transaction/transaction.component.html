@@ -4,13 +4,15 @@
         <thead>
           <tr>
             <th scope="col">Id</th>
+            <th scope="col">Timestamp</th>
             <th scope="col">Description</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let t of userService.getCurrentUser().transactions" [ngStyle]="{'color': (t.tokensUsed >= 0) ? 'green' : 'red'}">
-            <th scope="row">{{ t.id }}</th>
-            <td>{{ t.description }}</td>
+            <th scope="row" class="w-10">{{ t.id }}</th>
+            <th scope="row" class="w-25">{{ t.timeStamp | date:'medium' }}</th>
+            <td scope="row" class="w-65">{{ t.description }}</td>
           </tr>
         </tbody>
       </table>

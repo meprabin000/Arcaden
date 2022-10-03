@@ -3,6 +3,10 @@
     width: 100%;
 }
 
+.header > ul > li > a {
+    color: #b72b2b;
+}
+
 .header > a {
     text-decoration: none;
 }
