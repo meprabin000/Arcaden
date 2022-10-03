@@ -1,0 +1,16 @@
+<div class="allArcades">
+    <h3>Play Arcades</h3>
+
+    <div *ngFor="let arcade of allArcades;" class="arcadeSpace">
+        <div [id]="'arcade'+arcade.id" class="card arcadeItem">
+            <div class="card-body">
+              <h5 class="card-title">{{ arcade.name }}</h5>
+              <p class="card-text">Some description</p>
+            </div>
+            <div class="card-footer">
+                <p><i class="fab fa-adn"></i> {{ arcade.tokenToPlay }}</p>
+            </div>
+            <a [routerLink]="''+arcade.id"><span class="link"></span></a>
+        </div>
+    </div>
+</div>

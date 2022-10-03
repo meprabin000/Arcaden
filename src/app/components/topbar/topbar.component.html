@@ -1,0 +1,76 @@
+<div class="header">
+    <a routerLink="/"><h1 class="headerTitle">Arcaden</h1></a>
+
+      <ul class="nav justify-content-center">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class='fas fa-user-alt'></i> {{ userService.getCurrentUser().name }}</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" data-toggle="modal" data-target="#addBalance">Add Balance</a>
+              <a class="dropdown-item" data-toggle="modal" data-target="#purchaseTokens">Add Tokens</a>
+              <a class="dropdown-item" routerLink="/transactions">Transactions History</a>
+            </div>
+          </li>
+
+        <li class="nav-item">
+          <a class="nav-link disabled">Tokens: {{ userService.getTokens() }}</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link disabled">Balance: ${{ userService.getCurrentUser().balance }}</a>
+          </li>
+      </ul>
+</div>
+
+<!-- Add Balance Modal -->
+<div class="modal fade" id="addBalance" tabindex="-1" role="dialog" aria-labelledby="addBalanceLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addBalanceLabel">Add Balance</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form #balanceForm="ngForm" (ngSubmit)="userService.addBalance(balanceForm.value.balanceInput); amount = +''">
+                <div class="form-group">
+                  <label for="balanceInput">Amount</label>
+                  <input type="number" step=0.01 class="form-control" id="balanceInput" aria-describedby="balanceHelp" placeholder="Enter the amount to add to balance." [(ngModel)]="amount" name="balanceInput">
+                  <small id="balanceHelp" class="form-text text-muted">Please double check the amount before adding.</small>
+                </div>
+                <button type="submit" class="btn btn-primary" (onclick)="$event.preventDefault()">Add</button>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Purchase Tokens Modal -->
+<div class="modal fade" id="purchaseTokens" tabindex="-1" role="dialog" aria-labelledby="purchaseTokensLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="purchaseTokenLabel">Purchase Token</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form #tokenForm="ngForm" (ngSubmit)="userService.purchaseToken(tokenForm.value.tokenInput); amount = +''">
+                <div class="form-group">
+                  <label for="tokenInput">Number of tokens</label>
+                  <input type="number" class="form-control" id="tokenInput" aria-describedby="tokenHelp" placeholder="Enter the number to tokens to purchase" [(ngModel)]="amount" name="tokenInput">
+                  <small id="balanceHelp" class="form-text text-muted" *ngIf="tokenForm.value.tokenInput">{{tokenForm.value.tokenInput}} tokens costs ${{ tokenForm.value.tokenInput * tokenRate }}</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Purchase</button>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>

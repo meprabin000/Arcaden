@@ -1,0 +1,30 @@
+<div *ngIf="arcade" class="arcadeView">
+    <h2>{{ arcade.name }}</h2>
+    <div class="gameSpace">
+        <h3>There are 10 numbers in the roulette between 0 and 9. Guess a number. Correct guess wins the Win amount.</h3>
+        <form #guessForm="ngForm" (ngSubmit)="play(guessForm.value.newguess)">
+           <div class="form-group">
+            <select class="form-control form-control-lg" name="newguess" ngModel>
+                <option *ngFor="let item of [0,1,2,3,4,5,6,7,8,9]" [selected]="item === 0">{{item}}</option>
+            </select>
+            </div>
+            <button type="submit" *ngIf="canPlay()" class="btn btn-primary mb-2">Roll</button>
+            <p  *ngIf="!canPlay()">You do not have sufficient tokens to play. Please recharge.</p>
+        </form>
+        <div *ngIf="won === true" id="decisionMessage">
+            <h4>Congratulations! You just won ${{ arcade.tokenToPlay * 2 }}</h4>
+        </div>
+        <div *ngIf="won === false" id="decisionMessage">
+            <h4>Sorry! The correct guess was {{ winNumber }}. Better luck next time.</h4>
+        </div>
+        <div class="gamePanel">
+            <span>Win: {{ arcade.tokenToPlay * 2 }} tokens</span>
+            <span>Play: {{ arcade.tokenToPlay }} tokens</span>
+        </div>
+    </div>
+</div>
+
+<!-- Error Page  -->
+<div *ngIf="!arcade" class="error">
+    <h1>The page you have been looking for is not found.</h1>
+</div>

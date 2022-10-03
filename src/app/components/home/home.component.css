@@ -1,0 +1,56 @@
+.homepage {
+    padding: 20px 30px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.homepage > div {
+    display: inline-block;
+}
+
+.arcadeInstruction {
+    width: 90%;
+    text-align: left;
+    display: inline-block;
+    border: 1px solid rgb(178, 177, 177);
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #f5dbbe;
+}
+
+.arcadeInstruction li {
+    color: rgba(0,0,0,0.7);
+}
+
+.arcadeInstruction > h4 {
+    text-align: center;
+}
+
+.welcomePanel {
+    width: 75%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.welcomePanel > h3 {
+    font-weight: 600;
+}
+
+.welcomePanel::after {
+    content: "";
+    display: inline-block;
+    width: 40%;
+    border: 2px solid rgb(120, 117, 117);
+}
+
+.homeCard {
+    width: 90%;
+    margin: 5px;
+    box-sizing: border-box;
+}
+
+.homeCard > div {
+    display: inline-block;
+    border-radius: 15px;
+    box-shadow: 1px 2px 9px 6px #888888;
+}
