@@ -1,7 +1,8 @@
 <div *ngIf="arcade" class="arcadeView">
-    <h2>{{ arcade.name }}</h2>
+    <header><h2>{{ arcade.name }}</h2></header>
     <div class="gameSpace">
-        <h3>There are 10 numbers in the roulette between 0 and 9. Guess a number. Correct guess wins the Win amount.</h3>
+        <h3>A number is randomly sampled from a pool of 10 numbers (0-9 inclusive)</h3> 
+        <h3>Guess the number correctly to win.</h3>
         <form #guessForm="ngForm" (ngSubmit)="play(guessForm.value.newguess)">
            <div class="form-group">
             <select class="form-control form-control-lg" name="newguess" ngModel>
@@ -18,8 +19,8 @@
             <h4>Sorry! The correct guess was {{ winNumber }}. Better luck next time.</h4>
         </div>
         <div class="gamePanel">
-            <span>Win: {{ arcade.tokenToPlay * 2 }} tokens</span>
-            <span>Play: {{ arcade.tokenToPlay }} tokens</span>
+            <div>Win: <i class="fab fa-adn"></i> {{ arcade.tokenToPlay * 2 }}</div>
+            <div>Play: <i class="fab fa-adn"></i> {{ arcade.tokenToPlay }}</div>
         </div>
     </div>
 </div>

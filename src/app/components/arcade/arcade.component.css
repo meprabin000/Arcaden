@@ -1,15 +1,17 @@
 .allArcades {
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .allArcades > h3 {
     font-size: 3em;
+
 }
 
 .arcadeSpace {
     width: 40%;
     display: inline-block;
-    margin: 0px 15px;
+    margin: 15px;
     box-sizing: border-box;
 }
 
@@ -22,6 +24,15 @@
     color: #a30100;
     position: relative;
     border: 1px solid #a30100;
+}
+
+.arcadeItem .card-title {
+    font-size: 30px;
+}
+
+.arcadeItem .card-text {
+    color: rgba(137, 0, 0, 0.603);
+    font-size: 20px;
 }
 
 .link {

@@ -3,7 +3,7 @@
 
       <ul class="nav justify-content-center">
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class='fas fa-user-alt'></i> {{ userService.getCurrentUser().name }}</a>
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" href="#" aria-haspopup="true" aria-expanded="false"><i class='fas fa-user-alt'></i> {{ userService.getCurrentUser().name }}</a>
             <div class="dropdown-menu">
               <a class="dropdown-item" data-toggle="modal" data-target="#addBalance">Add Balance</a>
               <a class="dropdown-item" data-toggle="modal" data-target="#purchaseTokens">Add Tokens</a>
@@ -12,7 +12,7 @@
           </li>
 
         <li class="nav-item">
-          <a class="nav-link disabled">Tokens: {{ userService.getTokens() }}</a>
+          <a class="nav-link disabled"><i class="fab fa-adn"></i> {{ userService.getTokens() }}</a>
         </li>
 
         <li class="nav-item">
