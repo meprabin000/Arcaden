@@ -5,6 +5,7 @@ An arcade game management system that requires token to play the arcades, and co
 ## Compilation Instructions (built in Angular 14)
 
 - clone the repository and navigate inside the Arcaden directory of the cloned folder
+- Run `npm install` to install all the dependencies
 - Run `ng serve` and navigate to `http://localhost:4200`
 
 ## Service Architecture
