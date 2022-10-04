@@ -1,5 +1,8 @@
 <div *ngIf="arcade" class="arcadeView">
+    <!-- Guessing game title -->
     <header><h2>{{ arcade.name }}</h2></header>
+    
+    <!-- Guessing game display -->
     <div class="gameSpace">
         <h3>A number is randomly sampled from a pool of 10 numbers (0-9 inclusive)</h3> 
         <h3>Guess the number correctly to win.</h3>
@@ -10,11 +13,14 @@
             </select>
             </div>
             <button type="submit" *ngIf="canPlay()" class="btn btn-primary mb-2">Roll</button>
+            <!-- Display if the guess is incorrect -->
             <p  *ngIf="!canPlay()">You do not have sufficient tokens to play. Please recharge.</p>
         </form>
+        <!-- display on correct guess-->
         <div *ngIf="won === true" id="decisionMessage">
             <h4>Congratulations! You just won ${{ arcade.tokenToPlay * 2 }}</h4>
         </div>
+        <!-- display on incorrect guess-->
         <div *ngIf="won === false" id="decisionMessage">
             <h4>Sorry! The correct guess was {{ winNumber }}. Better luck next time.</h4>
         </div>
@@ -23,6 +29,7 @@
             <div>Play: <i class="fab fa-adn"></i> {{ arcade.tokenToPlay }}</div>
         </div>
     </div>
+
 </div>
 
 <!-- Error Page  -->

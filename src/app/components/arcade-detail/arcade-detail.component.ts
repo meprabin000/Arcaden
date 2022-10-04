@@ -14,11 +14,13 @@ export class ArcadeDetailComponent implements OnInit {
   error!: string;
   won!: Boolean;
   winNumber!: number;
+  
   constructor(private arcadeService: ArcadeService, private userService: UserService, private route: ActivatedRoute) { 
     this.error = "";
   }
 
   ngOnInit(): void {
+    // find the arcade game corresponding to the user click from the route
     const id = this.route.snapshot.paramMap.get('id');
     if(id !== null)
       this.arcade = this.arcadeService.getAllArcades().find((a) => a.id === +id);
@@ -26,6 +28,7 @@ export class ArcadeDetailComponent implements OnInit {
       this.error = "Not found";
   }
 
+  // simulates the play of the guess game by checking if the guess is correct
   play(guess: number): void {
     this.winNumber = Math.floor(Math.random() * 10);
     this.arcade && this.userService.removeTokens(this.arcade.tokenToPlay, this.arcade)

@@ -39,6 +39,7 @@ export class ArcadeService {
   constructor() {
    }
 
+   // returns the list of all arcade games from the data source
    getAllArcades(): Arcade[] {
     return arcades;
    }

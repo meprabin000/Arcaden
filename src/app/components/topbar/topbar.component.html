@@ -1,10 +1,13 @@
 <div class="header">
+    <!-- Heading Title-->
     <a routerLink="/"><h1 class="headerTitle">Arcaden</h1></a>
 
+      <!-- Navigation -->
       <ul class="nav justify-content-center">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" href="#" aria-haspopup="true" aria-expanded="false"><i class='fas fa-user-alt'></i> {{ userService.getCurrentUser().name }}</a>
             <div class="dropdown-menu">
+              <a class="dropdown-item" data-toggle="modal" data-target="#changeUser">Create/Change User</a>
               <a class="dropdown-item" data-toggle="modal" data-target="#addBalance">Add Balance</a>
               <a class="dropdown-item" data-toggle="modal" data-target="#purchaseTokens">Add Tokens</a>
               <a class="dropdown-item" routerLink="/transactions">Transactions History</a>
@@ -19,6 +22,33 @@
             <a class="nav-link disabled">Balance: ${{ userService.getCurrentUser().balance }}</a>
           </li>
       </ul>
+</div>
+
+<!-- Create/Change user -->
+<div class="modal fade" id="changeUser" tabindex="-1" role="dialog" aria-labelledby="changeUserLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="userLabel">Add/Change User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form #userForm="ngForm" (ngSubmit)="userService.changeUser(userForm.value.username); textBuffer = ''">
+              <div class="form-group">
+                <label for="userInput">New username or old username</label>
+                <input type="text" class="form-control" id="userInput" aria-describedby="usernameHelp" placeholder="Create a new user or type your old username" [(ngModel)]="textBuffer" name="username">
+                <small id="userHelp" class="form-text text-muted" *ngIf>Please enter the username you would like to create or change to.</small>
+              </div>
+              <button type="submit" class="btn btn-primary" (onclick)="$event.preventDefault()">Create</button>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Add Balance Modal -->

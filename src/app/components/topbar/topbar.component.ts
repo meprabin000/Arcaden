@@ -11,6 +11,7 @@ export class TopbarComponent implements OnInit {
 
   tokenRate: number;
   amount!: number;
+  textBuffer!: string;
   
   constructor(public userService: UserService) { 
     this.tokenRate = UserService.tokenCost;

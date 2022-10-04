@@ -1,4 +1,4 @@
-// arcade interface
+// each arcade game prototype
 export interface Arcade {
     id: number,
     name: string,
