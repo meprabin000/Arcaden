@@ -1,16 +1,12 @@
+import { User } from './../../models/User';
 import { Arcade } from './../../models/Arcade';
 import { ArcadeService } from './../arcade/arcade.service';
 import { Injectable } from '@angular/core';
-import { User } from 'src/app/models/User';
 import { Transaction } from 'src/app/models/Transaction';
+import { map } from 'rxjs';
+import { makeBindingParser } from '@angular/compiler';
 
-let users = [{
-  id: 1,
-  name: "Prabin",
-  balance: 20,
-  availableTokens: 0,
-  transactions: []
-}]
+let users: Map<string, User> = new Map<string, User>();
 
 // UserService implementation
 @Injectable({
@@ -18,18 +14,43 @@ let users = [{
 })
 export class UserService {
   static transactionIdGenerator: number = 1;
+  static userIdGenerator: number = 2;
   static tokenCost: number = 0.25;
   user: User;
 
   constructor(private arcadeService: ArcadeService) { 
-    this.user = users[0]; 
+    this.user = {
+      id: 1,
+      name: "defaultUser",
+      balance: 20,
+      availableTokens: 0,
+      transactions: []
+    };
+    users.set("defaultUser", this.user)
   }
 
-  // computign the tokens from the transactions
+  // computing the tokens from the transactions
   getTokens(): number {
     return this.user.transactions
               .map((t: Transaction) => t.tokensUsed)                       
               .reduce((prev: number, next: number) => prev + next, 0)
+  }
+
+  changeUser(username: string): void {
+    if(users.has(username)) {
+      this.user = users.get(username) ?? this.user;
+    } else {
+      const newUser: User = {
+        id: 1,
+        name: username,
+        balance: 20,
+        availableTokens: 0,
+        transactions: []
+      };
+
+      users.set(username, newUser);
+      this.user = newUser;
+    }
   }
 
   // add tokens
